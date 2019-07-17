@@ -103,6 +103,7 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
 
+
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +113,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+
+
+function articleCreator(title, date, p1, p2, p3) {
+  const article = document.createElement('div');
+  const titleArticle = document.createElement('h2');
+  const dateAtricle = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const button = document.createElement('span');
+
+  // class
+  article.classList.add('article');
+  dateAtricle.classList.add('date');
+  button.classList.add('expandButton');
+
+  // text content
+  titleArticle.textContent = title;
+  dateAtricle.textContent = date;
+  firstParagraph.textContent = p1;
+  secondParagraph.textContent = p2;
+  thirdParagraph.textContent = p3;
+  button.textContent = 'Expand';
+
+  // appends
+  article.appendChild(titleArticle);
+  article.appendChild(dateAtricle);
+  article.appendChild(firstParagraph, secondParagraph, thirdParagraph);
+  article.appendChild(button)
+
+  button.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+}
+
+data.forEach(function(article) {
+  document.querySelector('.articles').appendChild(articleCreator(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph));
+});
+
+
