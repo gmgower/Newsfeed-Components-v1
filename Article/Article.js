@@ -144,6 +144,7 @@ function articleCreator(title, date, p1, p2, p3) {
   article.appendChild(firstParagraph, secondParagraph, thirdParagraph);
   article.appendChild(button)
 
+  // click handler
   button.addEventListener('click', () => {
     article.classList.toggle('article-open');
   });
@@ -151,6 +152,7 @@ function articleCreator(title, date, p1, p2, p3) {
   return article;
 }
 
+// Iterate through data
 data.forEach(function(article) {
   document.querySelector('.articles').appendChild(articleCreator(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph));
 });
